@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import './Functions.scss'
 
 export class Functions extends Component {
     constructor(props) {
