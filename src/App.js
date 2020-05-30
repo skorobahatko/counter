@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Functions} from "./functions/Functions";
+import {Functions} from "./components/functions/Functions";
 
 function App() {
   return (
