@@ -5,7 +5,7 @@ export class Functions extends Component {
         super (props);
 
         this.state = {
-            result: '',
+            result: 0,
             inp: ''
         };
         this.Plus1 = this.Plus1.bind(this);
@@ -77,6 +77,12 @@ export class Functions extends Component {
             inp: ''
         })
     };
+    Reset = (e) => {
+        e.preventDefault();
+        this.setState({
+            result: 0
+        })
+    };
 
 
 
@@ -95,6 +101,7 @@ export class Functions extends Component {
                         <button onClick={this.Plus100}>+100</button>
                         <button onClick={this.Minus1}>-1</button>
                         <button onClick={this.Minus100}>-100</button>
+                        <button onClick={this.Reset}>reset</button>
                     </form>
                 </div>
                 <div>
