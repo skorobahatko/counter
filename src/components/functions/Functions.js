@@ -11,19 +11,6 @@ export class Functions extends Component {
             inp: '',
         };
     }
-    //
-    // Plus1 = () => {
-    //
-    // };
-    // Plus100 = () => {
-    //
-    // };
-    // Minus1 = () => {
-    //
-    // };
-    // Minus100 = () => {
-    //
-    // };
     Action = (act) => {
         let number = this.state.result;
         number = Number(number);
@@ -82,17 +69,15 @@ export class Functions extends Component {
         }
     };
     PlusInput = (e) => {
-        let plused = this.state.result;
-        let inpPlus = this.state.inp;
-        plused = Number(plused) + Number(inpPlus);
+        let {result, inp} = this.state;
+
+        result = Number(result) + Number(inp);
         this.setState({
-            result: plused,
+            result,
             inp: ''
+
         })
     };
-    // Reset = () => {
-    //
-    // };
 
 
 
