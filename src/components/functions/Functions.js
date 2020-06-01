@@ -11,45 +11,66 @@ export class Functions extends Component {
             inp: '',
         };
     }
-
-    Plus1 = () => {
-        let plused = this.state.result;
-        plused = Number(plused) + 1;
-        this.setState({
-            result: plused
-        });
-    };
-    Plus100 = () => {
-        let plused = this.state.result;
-        plused = Number(plused) + 100;
-        this.setState({
-            result: plused
-        })
-    };
-    Minus1 = () => {
-        let minused = this.state.result;
-        minused = Number(minused) - 1;
-        if (Math.sign(minused) !== -1) {
-            this.setState ({
-                result: minused
-            })
-        } else {
-            this.setState({
-                result: '0'
-            })
-        }
-    };
-    Minus100 = () => {
-        let minused = this.state.result;
-        minused = Number(minused) - 100;
-        if (Math.sign(minused) !== -1) {
-            this.setState ({
-                result: minused
-            })
-        } else {
-            this.setState({
-                result: '0'
-            })
+    //
+    // Plus1 = () => {
+    //
+    // };
+    // Plus100 = () => {
+    //
+    // };
+    // Minus1 = () => {
+    //
+    // };
+    // Minus100 = () => {
+    //
+    // };
+    Action = (act) => {
+        let number = this.state.result;
+        number = Number(number);
+        switch (act) {
+            case 1 :
+                number += 1;
+                this.setState({
+                    result: number
+                });
+                break;
+            case 100:
+                number += 100;
+                this.setState({
+                    result: number
+                });
+                break;
+            case -1:
+                number -= 1;
+                if (Math.sign(number) !== -1) {
+                    this.setState ({
+                        result: number
+                    })
+                } else {
+                    this.setState({
+                        result: 0
+                    })
+                };
+                break;
+            case -100:
+                number -= 100;
+                if (Math.sign(number) !== -1) {
+                    this.setState ({
+                        result: number
+                    })
+                } else {
+                    this.setState({
+                        result: 0
+                    })
+                }
+                break;
+            case 'reset':
+                this.setState({
+                    result: 0
+                });
+                break;
+            default:
+                console.log ('err');
         }
     };
     onChangeInp = (e) => {
@@ -69,11 +90,9 @@ export class Functions extends Component {
             inp: ''
         })
     };
-    Reset = () => {
-        this.setState({
-            result: 0
-        })
-    };
+    // Reset = () => {
+    //
+    // };
 
 
 
@@ -82,7 +101,7 @@ export class Functions extends Component {
         return (
             <div>
                 <Result value={result}/>
-                <Buttons plus1={this.Plus1} plus100={this.Plus100} minus1={this.Minus1} minus100={this.Minus100} reset={this.Reset}/>
+                <Buttons action={this.Action.bind()}/>
                 <div>
                     <input type="text" value={inp} onChange={this.onChangeInp}/>
                     <button onClick={this.PlusInput}>plus</button>
